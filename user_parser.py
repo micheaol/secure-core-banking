@@ -75,8 +75,30 @@ api_response = {
         }
     ]
 }
+# 1. Where does parameter come from?
 
-for key,value in api_response.items():
-    for user in value:
-        if user["role"] == "administrator":
-            print(f"admin_user: {user["username"]}")
+# User?
+
+# API?
+
+# Database?
+
+# Third party?
+def is_admin(users):
+    for key,value in users.items():
+        for user in value:
+            if user["role"] == "administrator":
+                print(f"admin_user: {user["username"]}")
+
+
+is_admin(api_response)
+# def greet_user(name):
+#     print(f"Hello, {name}")
+
+# greet_user("Michael")
+
+# def create_user(username, role):
+#     print(role)
+#     print(username)
+
+# create_user("Michael", "admin")
