@@ -1,118 +1,29 @@
-# # # API_KEY="Super-secret-key"
-
-# # # # List
-# # # users = [
-# # #     "Administrator",
-# # #     "admin",
-# # #     "guest",
-# # #     "test"
-# # # ]
-
-# # # # for user in users:
-# # # #     # print(f"Testing {user}")
-
-
-# # # # Dictionary
-# # # user = {
-# # #     "username":"Michael",
-# # #     "email":"test@gmail.com",
-# # #     "role":"admin"
-# # # }
-
-# # # user["is_active"] = True
-
-# # # # for key,value in user.items():
-# # # #     print(value)
-
-# # # # Turple: Once created, they cannot be changed.
-# # users = [
-# #     {
-# #         "username": "john",
-# #         "role": "user",
-# #         "active": True
-# #     },
-# #     {
-# #         "username": "admin",
-# #         "role": "administrator",
-# #         "active": True
-# #     },
-# #     {
-# #         "username": "guest",
-# #         "role": "user",
-# #         "active": False
-# #     },
-# #     {
-# #         "username": "backup_admin",
-# #         "role": "administrator",
-# #         "active": False
-# #     }
-# # ]
-
-# # for user in users:
-# #     if user["active"]:
-# #         print(f"active_user {user["username"]}")
-
-# # for user in users:
-# #     if user["role"] == "administrator":
-# #         print(user["username"])
-
-# # active_user = 0
-# # for user in users:
-# #     if user["active"]:
-# #         active_user +=1
-
-# # print(active_user)
-
-# api_response = {
-#     "users": [
-#         {
-#             "username": "john",
-#             "role": "user"
-#         },
-#         {
-#             "username": "admin",
-#             "role": "administrator"
-#         }
-#     ]
-# }
-# # 1. Where does parameter come from?
-
-# # User?
-
-# # API?
-
-# # Database?
-
-# # Third party?
-# def is_admin(users):
-#     for key,value in users.items():
-#         for user in value:
-#             if user["role"] == "administrator":
-#                 print(f"admin_user: {user["username"]}")
-
-
-# is_admin(api_response)
-# # def greet_user(name):
-# #     print(f"Hello, {name}")
-
-# # greet_user("Michael")
-
-# # def create_user(username, role):
-# #     print(role)
-# #     print(username)
-
-# # create_user("Michael", "admin")
+# user_parser.py
 
 class User:
-    def __init__(self, username, role):
-        self.role = role
+    def __init__(self, username, role, is_verified):
         self.username = username
-    def greet(self):
-        print(f"Welcome {self.username}")
+        self.role = role
+        self.is_verified = is_verified
 
+    def get_access_summary(self):
+        return f"User: {self.username} | Role: {self.role} | Verified: {self.is_verified}"
 
-user_1 = User("michael", "admin")
+# Mock data payload (resembles an API output database entry)
+raw_users = [
+    {"username": "admin", "role": "Administrator", "is_verified": True},
+    {"username": "guest_user", "role": "Guest", "is_verified": False},
+    {"username": "alice_dev", "role": "Developer", "is_verified": True}
+]
 
+# Instantiate class objects using data loop logic
+active_profiles = []
+for data in raw_users:
+    user_obj = User(data["username"], data["role"], data["is_verified"])
+    active_profiles.append(user_obj)
 
-
-user_1.greet()
+# Security Logic: Print access summaries only for verified profiles
+print("--- Verified System Profiles ---")
+for profile in active_profiles:
+    if profile.is_verified:
+        print(profile.get_access_summary())
