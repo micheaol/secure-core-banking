@@ -1,104 +1,118 @@
-# # API_KEY="Super-secret-key"
+# # # API_KEY="Super-secret-key"
 
-# # # List
+# # # # List
+# # # users = [
+# # #     "Administrator",
+# # #     "admin",
+# # #     "guest",
+# # #     "test"
+# # # ]
+
+# # # # for user in users:
+# # # #     # print(f"Testing {user}")
+
+
+# # # # Dictionary
+# # # user = {
+# # #     "username":"Michael",
+# # #     "email":"test@gmail.com",
+# # #     "role":"admin"
+# # # }
+
+# # # user["is_active"] = True
+
+# # # # for key,value in user.items():
+# # # #     print(value)
+
+# # # # Turple: Once created, they cannot be changed.
 # # users = [
-# #     "Administrator",
-# #     "admin",
-# #     "guest",
-# #     "test"
+# #     {
+# #         "username": "john",
+# #         "role": "user",
+# #         "active": True
+# #     },
+# #     {
+# #         "username": "admin",
+# #         "role": "administrator",
+# #         "active": True
+# #     },
+# #     {
+# #         "username": "guest",
+# #         "role": "user",
+# #         "active": False
+# #     },
+# #     {
+# #         "username": "backup_admin",
+# #         "role": "administrator",
+# #         "active": False
+# #     }
 # # ]
 
-# # # for user in users:
-# # #     # print(f"Testing {user}")
+# # for user in users:
+# #     if user["active"]:
+# #         print(f"active_user {user["username"]}")
+
+# # for user in users:
+# #     if user["role"] == "administrator":
+# #         print(user["username"])
+
+# # active_user = 0
+# # for user in users:
+# #     if user["active"]:
+# #         active_user +=1
+
+# # print(active_user)
+
+# api_response = {
+#     "users": [
+#         {
+#             "username": "john",
+#             "role": "user"
+#         },
+#         {
+#             "username": "admin",
+#             "role": "administrator"
+#         }
+#     ]
+# }
+# # 1. Where does parameter come from?
+
+# # User?
+
+# # API?
+
+# # Database?
+
+# # Third party?
+# def is_admin(users):
+#     for key,value in users.items():
+#         for user in value:
+#             if user["role"] == "administrator":
+#                 print(f"admin_user: {user["username"]}")
 
 
-# # # Dictionary
-# # user = {
-# #     "username":"Michael",
-# #     "email":"test@gmail.com",
-# #     "role":"admin"
-# # }
+# is_admin(api_response)
+# # def greet_user(name):
+# #     print(f"Hello, {name}")
 
-# # user["is_active"] = True
+# # greet_user("Michael")
 
-# # # for key,value in user.items():
-# # #     print(value)
+# # def create_user(username, role):
+# #     print(role)
+# #     print(username)
 
-# # # Turple: Once created, they cannot be changed.
-# users = [
-#     {
-#         "username": "john",
-#         "role": "user",
-#         "active": True
-#     },
-#     {
-#         "username": "admin",
-#         "role": "administrator",
-#         "active": True
-#     },
-#     {
-#         "username": "guest",
-#         "role": "user",
-#         "active": False
-#     },
-#     {
-#         "username": "backup_admin",
-#         "role": "administrator",
-#         "active": False
-#     }
-# ]
+# # create_user("Michael", "admin")
 
-# for user in users:
-#     if user["active"]:
-#         print(f"active_user {user["username"]}")
-
-# for user in users:
-#     if user["role"] == "administrator":
-#         print(user["username"])
-
-# active_user = 0
-# for user in users:
-#     if user["active"]:
-#         active_user +=1
-
-# print(active_user)
-
-api_response = {
-    "users": [
-        {
-            "username": "john",
-            "role": "user"
-        },
-        {
-            "username": "admin",
-            "role": "administrator"
-        }
-    ]
-}
-# 1. Where does parameter come from?
-
-# User?
-
-# API?
-
-# Database?
-
-# Third party?
-def is_admin(users):
-    for key,value in users.items():
-        for user in value:
-            if user["role"] == "administrator":
-                print(f"admin_user: {user["username"]}")
+class User:
+    def __init__(self, username, role):
+        self.role = role
+        self.username = username
+    def greet(self):
+        print(f"Welcome {self.username}")
 
 
-is_admin(api_response)
-# def greet_user(name):
-#     print(f"Hello, {name}")
+user_1 = User("michael", "admin")
 
-# greet_user("Michael")
 
-# def create_user(username, role):
-#     print(role)
-#     print(username)
 
-# create_user("Michael", "admin")
+user_1.greet()
